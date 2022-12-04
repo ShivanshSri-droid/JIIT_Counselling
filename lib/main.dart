@@ -9,12 +9,18 @@ import 'secondRoute.dart';
 import 'thirdRoute.dart';
 import 'fourthRoute.dart';
 import 'FifthRoute.dart';
-import 'SixthRoute.dart';
-import 'SeventhRoute.dart';
-import 'EightRoute.dart';
+import 'SixthRoute.dart'; //ADDED THIS
+import 'SeventhRoute.dart'; //ADDED THIS and REMOVE JS:DART
+import 'EightRoute.dart'; //ADDED THIS
+import 'NinthRoute.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MaterialApp(
     initialRoute: '/',
@@ -22,11 +28,12 @@ Future<void> main() async {
       '/': (context) => const HomeRoute(),
       '/second': (context) => const SecondRoute(),
       '/third': (context) => const ThirdRoute(),
-      // '/FourthRoute': (context) => const FourthRoute(),
-      // '/FifthRoute': (context) => const FifthRoute(),
-      // '/SixthRoute': (context) => const SixthRoute(),
-      '/SeventhRoute': (context) => const SeventhRoute(),
-      '/EightRoute': (context) => const EightRoute(),
+      '/FourthRoute': (context) => const FourthRoute(),
+      '/FifthRoute': (context) => const FifthRoute(),
+      '/SixthRoute': (context) => const SixthRoute(), //ADDED THIS
+      '/SeventhRoute': (context) => const SeventhRoute(), //ADDED THIS
+      '/EightRoute': (context) => const EightRoute(), //ADDED THIS
+      '/NinthRoute': (context) => const NinthRoute(),
     },
   ));
 }

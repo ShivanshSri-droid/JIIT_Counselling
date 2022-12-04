@@ -21,6 +21,7 @@ class LoginController extends GetxController {
           .signInWithEmailAndPassword(email: email, password: password);
       return true;
     } on FirebaseAuthException catch (e) {
+      print(e.code);
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
         return false;
