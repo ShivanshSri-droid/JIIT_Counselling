@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'login_controller.dart';
 import 'package:jiit_counselling_trial1/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:jiit_counselling_trial1/login_controller.dart';
@@ -83,20 +84,21 @@ class HomeRoute extends StatelessWidget {
                                           Radius.circular(20)),
                                     ),
                                     labelText: 'Password',
+
                                     // errorText: 'Wrong Password',
                                   )))
                         ],
                       )),
                   ElevatedButton(
                       onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          isLoggedIn = await LoginController.instance.loginUser(
-                              controller.userName.text.trim(),
-                              controller.password.text.trim());
-                        }
-                        if (isLoggedIn) {
-                          Navigator.pushNamed(context, '/second');
-                        }
+                        // if (_formKey.currentState!.validate()) {
+                        //   isLoggedIn = await LoginController.instance.loginUser(
+                        //       controller.userName.text.trim(),
+                        //       controller.password.text.trim());
+                        // }
+                        // if (isLoggedIn) {
+                        Navigator.pushNamed(context, '/second');
+                        // }
                       },
                       child: Center(
                           widthFactor: 1,

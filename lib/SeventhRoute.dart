@@ -68,7 +68,7 @@ class _SeventhRouteState extends State<SeventhRoute> {
             Container(child: boxes()),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/EightRoute');
+                  Navigator.pushReplacementNamed(context, '/NinthRoute');
                 },
                 child: Center(
                     widthFactor: 1,

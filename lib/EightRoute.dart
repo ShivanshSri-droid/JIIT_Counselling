@@ -47,91 +47,92 @@ class _EightRouteState extends State<EightRoute> {
                       ),
                     ),
                     Container(
-                        child: Column(children: [
-                      Container(
-                        padding: const EdgeInsets.fromLTRB(24, 15, 24, 15),
-                        child: choice1(),
-                      ),
-                      Container(
-                        child: Row(
-                          children: [
-                            new Flexible(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(5, 15, 20, 15),
-                                child: TextField(
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-// controller: nameController,
-                                    keyboardType: TextInputType.number,
-                                    inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
-                                    maxLength: 3,
-                                    decoration: const InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white70,
-                                        border: OutlineInputBorder(),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              width: 1, color: Colors.black),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                        labelText: "Max Marks"
-// errorText: 'Wrong Password',
-                                        )),
-                              ),
-                            ),
-                            new Flexible(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                                child: TextField(
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-// controller: nameController,
-                                    keyboardType: TextInputType.number,
-                                    inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
-                                    maxLength: 3,
-                                    decoration: const InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white70,
-                                        border: OutlineInputBorder(),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              width: 1, color: Colors.black),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                        labelText: "Marks Obtained"
-// errorText: 'Wrong Password',
-                                        )),
-                              ),
-                            ),
-                          ],
+                      child: Column(children: [
+                        Container(
+                          // padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
+                          margin: EdgeInsets.only(left: 40, right: 40),
+                          width: MediaQuery.of(context).size.width,
+                          child: Container(
+                            padding: EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white70,
+                                border:
+                                    Border.all(color: Colors.black, width: 1),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: choice1(),
+                          ),
                         ),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(
-                                context, '/EightRoute');
-                          },
-                          child: Center(
-                              widthFactor: 1,
-                              heightFactor: 1,
-                              child: Text(
-                                'Next Page',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
-                              ))),
-                    ])),
-                    // Divider(height: 1),
+                        Container(
+                          // padding: const EdgeInsets.fromLTRB(5, 15, 20, 15),
+                          margin: EdgeInsets.only(left: 40, right: 40, top: 20),
+                          child: TextField(
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+// controller: nameController,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              maxLength: 3,
+                              decoration: const InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                  ),
+                                  labelText: "Max Marks"
+// errorText: 'Wrong Password',
+                                  )),
+                        ),
+                        Container(
+                          // padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                          margin: EdgeInsets.only(left: 40, right: 40, top: 0),
+                          child: TextField(
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+// controller: nameController,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              maxLength: 3,
+                              decoration: const InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                  ),
+                                  labelText: "Marks Obtained"
+// errorText: 'Wrong Password',
+                                  )),
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(
+                                  context, '/EightRoute');
+                            },
+                            child: Center(
+                                widthFactor: 1,
+                                heightFactor: 1,
+                                child: Text(
+                                  'Next Page',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                ))),
+                      ]),
+                      // Divider(height: 1),
+                    )
                   ],
                 ),
               ),
@@ -165,9 +166,11 @@ class _choice1State extends State<choice1> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
+    String? init = null;
+    return DropdownButtonHideUnderline(
+        child: DropdownButton(
       // Initial Value
-      value: dropdownvalue,
+      value: init,
       // Down Arrow Icon
       icon: const Icon(Icons.keyboard_arrow_down),
 
@@ -187,8 +190,10 @@ class _choice1State extends State<choice1> {
       },
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       elevation: 12,
+      hint: Text("Choice 1"),
+      isExpanded: true,
       style: TextStyle(
           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
-    );
+    ));
   }
 }

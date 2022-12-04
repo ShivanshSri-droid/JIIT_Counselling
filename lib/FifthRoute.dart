@@ -2,26 +2,9 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jiit_counselling_trial1/firebase_options.dart';
-import 'SixthRoute.dart';
 
 class FifthRoute extends StatelessWidget {
-  // const FifthRoute({Key? key}) : super(key: key);
-
-  String id;
-
-  FifthRoute({required this.id});
-
-  final ddNum = TextEditingController();
-  final dob = TextEditingController();
-  final bank = TextEditingController();
-  final nameACHldr = TextEditingController();
-  final bankName = TextEditingController();
-  final accNum = TextEditingController();
-  final branchName = TextEditingController();
-  final addressOfBank = TextEditingController();
-  final ifscCode = TextEditingController();
+  const FifthRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +40,17 @@ class FifthRoute extends StatelessWidget {
                                     fontSize: 20,
                                     color: Colors.black)))),
                     Container(
-                        padding: EdgeInsets.fromLTRB(1, 2, 10, 15),
+                        // padding: EdgeInsets.fromLTRB(50, 2, 50, 15)
+                        // padding: EdgeInsets.all(50),
+                        margin: EdgeInsets.only(
+                            left: 50,
+                            right: 50,
+                            top: 10,
+                            bottom: 10), //Add this line
                         child: Center(
                             child: Text(
                                 '(Not applicable in case Form is purchased on payment in cash or by post from Institute Counter)',
+                                textAlign: TextAlign.center, //Add this line
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
@@ -72,7 +62,6 @@ class FifthRoute extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
                               child: TextField(
-                                  controller: ddNum,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
@@ -101,7 +90,6 @@ class FifthRoute extends StatelessWidget {
                               padding:
                                   const EdgeInsets.fromLTRB(20, 10, 40, 20),
                               child: TextFormField(
-                                  controller: dob,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
@@ -141,7 +129,6 @@ class FifthRoute extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.fromLTRB(40, 10, 40, 0),
                           child: TextField(
-                            controller: bank,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -173,9 +160,11 @@ class FifthRoute extends StatelessWidget {
                                       fontSize: 20,
                                       color: Colors.black)))),
                       Container(
-                        padding: const EdgeInsets.fromLTRB(1, 1, 0, 15),
+                        // padding: const EdgeInsets.fromLTRB(1, 1, 0, 15),
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 10),
                         child: Text(
                           "Required for Refund in case of Withdrawl (ONLY PARENT/SELF)",
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
@@ -185,7 +174,6 @@ class FifthRoute extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                           child: TextField(
-                            controller: nameACHldr,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -207,7 +195,6 @@ class FifthRoute extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                           child: TextField(
-                            controller: bankName,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -229,7 +216,6 @@ class FifthRoute extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                           child: TextField(
-                              controller: accNum,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
@@ -249,7 +235,6 @@ class FifthRoute extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                           child: TextField(
-                            controller: branchName,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -271,7 +256,6 @@ class FifthRoute extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                           child: TextField(
-                              controller: addressOfBank,
                               maxLines: 5,
                               minLines: 1,
                               style: const TextStyle(
@@ -294,7 +278,6 @@ class FifthRoute extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                           child: TextField(
-                              controller: ifscCode,
                               maxLines: 5,
                               minLines: 1,
                               style: const TextStyle(
@@ -314,55 +297,24 @@ class FifthRoute extends StatelessWidget {
                                   labelText: "IFSC Code"
                                   // errorText: 'Wrong Password',
                                   ))),
-                      ElevatedButton(
-                          onPressed: () {
-                            final ddNum1 = ddNum.text;
-                            final dob1 = dob.text;
-                            final bank1 = bank.text;
-                            final nameACHldr1 = nameACHldr.text;
-                            final bankName1 = bankName.text;
-                            final accNum1 = accNum.text;
-                            final branchName1 = branchName.text;
-                            final addressOfBank1 = addressOfBank.text;
-                            final ifscCode1 = ifscCode.text;
-
-                            var collection = FirebaseFirestore.instance
-                                .collection('application');
-                            collection
-                                .doc(
-                                    id) // <-- Doc ID where data should be updated.
-                                .update({
-                                  'ddNum': ddNum1,
-                                  'dob1': dob1,
-                                  'bank': bank1,
-                                  'nameACHldr': nameACHldr1,
-                                  'bankName': bankName1,
-                                  'accNum': accNum1,
-                                  'branchName': branchName1,
-                                  'addressOfBank': addressOfBank1,
-                                  'ifscCode': ifscCode1,
-                                }) // <-- New data
-                                .then((_) => print('Updated'))
-                                .catchError(
-                                    (error) => print('Update failed: $error'));
-
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SixthRoute(id: id)));
-
-                            // Navigator.pushReplacementNamed(
-                            //ADDED THIS
-                            // context,
-                            // '/SixthRoute');
-                          },
-                          child: Center(
-                              widthFactor: 1,
-                              heightFactor: 1,
-                              child: Text(
-                                'Next Page',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
-                              ))),
+                      Container(
+                          margin: EdgeInsets.only(bottom: 30, top: 10),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacementNamed(
+                                    //ADDED THIS
+                                    context,
+                                    '/SixthRoute');
+                              },
+                              child: Center(
+                                  widthFactor: 1,
+                                  heightFactor: 1,
+                                  child: Text(
+                                    'Next Page',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                  )))),
                     ])),
                     // Divider(height: 1),
                   ],
